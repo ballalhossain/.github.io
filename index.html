@@ -1,780 +1,665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>BTech · Innovation Lab @ GitHub</title>
-  <!-- Google Fonts + simple reset -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BTech Creations builds useful Android and mobile apps including QSnap, Tongue Twisters, EMI Hisab BD, Travalingo, and productivity tools." />
+  <meta name="keywords" content="BTech Creations, Android apps, mobile apps, QSnap, Tongue Twisters, EMI Hisab BD, Travalingo, app-ads.txt" />
+  <meta name="author" content="BTech Creations" />
+  <title>BTech Creations | Mobile Apps & Digital Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #f59e0b;
+      --dark: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      --radius: 24px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f9fafc;
-      color: #111827;
-      line-height: 1.5;
+    html {
       scroll-behavior: smooth;
     }
 
-    /* container utility */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    /* navigation */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
     .navbar {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 1px 6px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
-      z-index: 100;
-      padding: 16px 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     }
-    .nav-flex {
+
+    .nav-inner {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
+      gap: 24px;
     }
-    .logo {
-      font-size: 1.8rem;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #0a2b3e, #1e6f5c);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      font-size: 1.25rem;
     }
-    .logo span {
-      background: none;
-      color: #1e6f5c;
-      font-weight: 700;
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #14b8a6);
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.28);
     }
+
     .nav-links {
       display: flex;
-      gap: 32px;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #475569;
     }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 500;
-      color: #2c3e4e;
-      transition: color 0.2s;
-      font-size: 1rem;
-    }
+
     .nav-links a:hover {
-      color: #1e6f5c;
-    }
-    .btn-outline-small {
-      border: 1.5px solid #1e6f5c;
-      padding: 8px 18px;
-      border-radius: 60px;
-      font-weight: 600;
-      color: #1e6f5c;
-      background: transparent;
-      transition: all 0.2s;
-    }
-    .btn-outline-small:hover {
-      background: #1e6f5c10;
-      border-color: #0f5242;
+      color: var(--primary);
     }
 
-    /* hero section */
     .hero {
-      padding: 80px 0 70px;
-      background: linear-gradient(145deg, #ffffff 0%, #f4f9fc 100%);
+      padding: 86px 0 64px;
+      background:
+        radial-gradient(circle at top left, rgba(20, 184, 166, 0.16), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.14), transparent 28%),
+        var(--white);
     }
+
     .hero-grid {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 48px;
-      justify-content: space-between;
+      align-items: center;
     }
-    .hero-content {
-      flex: 1;
-      min-width: 280px;
-    }
-    .badge {
-      background: #e0f2e9;
-      color: #1a5d4c;
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-    .hero-content h1 {
-      font-size: 3.3rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: #0b2b26;
-    }
-    .hero-highlight {
-      background: linear-gradient(120deg, #e0f2e9 0%, #c8e6df 80%);
-      padding: 0 8px;
-      display: inline-block;
-    }
-    .hero-description {
-      font-size: 1.2rem;
-      color: #2c4b3f;
-      margin-bottom: 32px;
-      max-width: 540px;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 32px;
-      margin: 32px 0 28px;
-    }
-    .stat-item h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #1e6f5c;
-    }
-    .stat-item p {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #4a6272;
-    }
-    .btn-group {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: #1e6f5c;
-      color: white;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: none;
+
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-    }
-    .btn-primary:hover {
-      background: #0f5a49;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(30,111,92,0.25);
-    }
-    .btn-secondary {
-      background: transparent;
-      border: 1.5px solid #1e6f5c;
-      color: #1e6f5c;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .btn-secondary:hover {
-      background: #eaf9f4;
-    }
-    .hero-visual {
-      flex: 1;
-      background: radial-gradient(circle at 30% 20%, rgba(30,111,92,0.08), transparent 70%);
-      border-radius: 48px;
-      padding: 20px;
-      text-align: center;
-    }
-    .code-card {
-      background: #0f1722;
-      border-radius: 32px;
-      padding: 28px 24px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-      text-align: left;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      color: #cbd5e6;
-    }
-    .code-line {
-      margin: 6px 0;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: var(--primary-dark);
       font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      border: 1px solid #ccfbf1;
     }
-    .comment { color: #6c8a9e; }
-    .keyword { color: #7dd3fc; }
-    .string { color: #bef264; }
 
-    /* sections general */
-    section {
-      padding: 80px 0;
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      color: var(--dark);
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
     }
-    .section-title {
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
-      text-align: center;
+
+    .hero p {
+      font-size: 1.12rem;
+      color: #475569;
+      max-width: 620px;
+      margin-bottom: 30px;
     }
-    .section-sub {
-      text-align: center;
-      color: #4a6272;
-      max-width: 680px;
-      margin: 0 auto 56px auto;
-      font-size: 1.1rem;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-    }
-    .project-card {
-      background: white;
-      border-radius: 28px;
-      padding: 28px 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
-      border: 1px solid #eef2f6;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 24px 38px -16px rgba(0,0,0,0.12);
-      border-color: #d0e2db;
-    }
-    .project-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .project-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .project-desc {
-      color: #3b5a6b;
-      margin-bottom: 20px;
-    }
-    .project-tech {
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .tech-badge {
-      background: #eef3f0;
-      padding: 4px 12px;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #1e6f5c;
-    }
-    .repo-link {
-      text-decoration: none;
-      font-weight: 600;
-      color: #1e6f5c;
-      display: inline-flex;
+      gap: 14px;
       align-items: center;
-      gap: 6px;
     }
 
-    /* metrics / github insights */
-    .insight-bg {
-      background: linear-gradient(115deg, #eef5f2 0%, #ffffff 100%);
-      border-radius: 48px;
-    }
-    .insight-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 48px;
-      padding: 32px 40px;
-    }
-    .insight-stats {
-      flex: 1;
-      min-width: 200px;
-    }
-    .insight-stats h3 {
-      font-size: 1.9rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .big-number {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0f5a49;
-      letter-spacing: -1px;
-    }
-    .github-btn {
-      background: #24292e;
-      color: white;
-      border-radius: 60px;
-      padding: 12px 28px;
-      text-decoration: none;
-      font-weight: 600;
+    .btn {
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.2s;
-    }
-    .github-btn:hover {
-      background: #1a1e22;
-    }
-
-    /* team section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 40px;
-      margin-top: 20px;
-    }
-    .member-card {
-      background: white;
-      border-radius: 32px;
-      text-align: center;
-      padding: 36px 16px 28px;
-      transition: all 0.2s;
-      border: 1px solid #eef2f6;
-    }
-    .avatar {
-      background: #d9f0ea;
-      width: 100px;
-      height: 100px;
-      border-radius: 100px;
-      display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 2.8rem;
-      font-weight: 500;
-      color: #1e6f5c;
-    }
-    .member-name {
-      font-size: 1.4rem;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 999px;
       font-weight: 700;
-    }
-    .member-role {
-      color: #1e6f5c;
-      font-weight: 500;
-      margin: 6px 0 12px;
-    }
-    .member-bio {
-      font-size: 0.9rem;
-      color: #4a5b66;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
     }
 
-    /* contact section */
-    .contact-section {
-      background: #ffffff;
-      border-radius: 48px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 14px 28px rgba(15, 118, 110, 0.22);
     }
-    .contact-grid {
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--primary-dark);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      color: var(--dark);
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .quick-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quick-link {
+      padding: 15px 16px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      transition: 0.2s ease;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .quick-link span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .quick-link:hover {
+      border-color: #99f6e4;
+      transform: translateX(4px);
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading h2 {
+      color: var(--dark);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+      line-height: 1.12;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .app-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
+      transition: 0.2s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #ecfdf5;
+      color: var(--primary-dark);
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+
+    .app-card h3 {
+      color: var(--dark);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .app-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 0.96rem;
+    }
+
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 48px;
-      justify-content: space-between;
-      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
     }
-    .contact-info {
-      flex: 1;
-      min-width: 260px;
-    }
-    .contact-info h3 {
-      font-size: 1.8rem;
+
+    .tag {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
       font-weight: 700;
-      margin-bottom: 16px;
-      color: #0b2b26;
     }
-    .contact-details {
-      margin-top: 32px;
-      background: #f8fbfa;
-      padding: 24px 28px;
-      border-radius: 32px;
-      border: 1px solid #e0ede8;
-    }
-    .contact-email {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 1.15rem;
-      background: white;
-      padding: 16px 24px;
-      border-radius: 60px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-      border: 1px solid #d4e2dc;
-      transition: all 0.2s;
-    }
-    .contact-email:hover {
-      border-color: #1e6f5c;
-      transform: translateX(6px);
-    }
-    .contact-email span:first-child {
-      font-size: 1.8rem;
-    }
-    .contact-email a {
-      color: #1e6f5c;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-    }
-    .contact-email a:hover {
-      text-decoration: underline;
-    }
-    .contact-social {
-      margin-top: 24px;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-    .contact-icon {
-      background: #ecf6f2;
-      padding: 10px;
-      border-radius: 60px;
-      font-size: 1.3rem;
-      transition: 0.2s;
-      cursor: pointer;
-      display: inline-flex;
-    }
-    .contact-icon:hover {
-      background: #d5ede5;
-      transform: translateY(-3px);
-    }
-    .contact-form-placeholder {
-      flex: 1;
-      background: linear-gradient(145deg, #f9fefc, #ffffff);
-      border-radius: 32px;
-      padding: 32px;
-      border: 1px solid #e2efea;
-      text-align: center;
-    }
-    .mock-form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-top: 20px;
-    }
-    .mock-input {
-      background: #ffffff;
-      padding: 14px 18px;
-      border-radius: 60px;
-      border: 1px solid #cfdfd9;
-      font-family: inherit;
+
+    .card-link {
+      color: var(--primary-dark);
+      font-weight: 800;
       font-size: 0.95rem;
     }
-    .mock-btn {
-      background: #1e6f5c;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 60px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .mock-btn:hover {
-      background: #0f5a49;
-    }
-    .tiny-note {
-      font-size: 0.75rem;
-      margin-top: 12px;
-      color: #679681;
+
+    .about {
+      background: var(--white);
     }
 
-    /* footer */
-    footer {
-      background: #0f1b1f;
-      color: #cbd5e1;
-      padding: 56px 0 32px;
-      border-radius: 32px 32px 0 0;
-      margin-top: 40px;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 36px;
+      align-items: center;
     }
-    .footer-flex {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 32px;
-      margin-bottom: 48px;
+
+    .profile-card {
+      background: linear-gradient(145deg, #0f766e, #115e59);
+      color: var(--white);
+      border-radius: 34px;
+      padding: 32px;
+      box-shadow: var(--shadow);
     }
-    .footer-col p {
-      max-width: 280px;
-      margin-top: 12px;
-      font-size: 0.9rem;
+
+    .profile-card h3 {
+      font-size: 1.75rem;
+      margin-bottom: 10px;
     }
-    .footer-col h4 {
-      color: white;
+
+    .profile-card p {
+      color: #ccfbf1;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .info-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .policies-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .policy-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .policy-card h3 {
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .policy-card p {
+      color: var(--muted);
       margin-bottom: 16px;
-      font-weight: 600;
     }
-    .footer-links {
-      list-style: none;
+
+    .contact-box {
+      background: linear-gradient(135deg, #0f172a, #115e59);
+      border-radius: 36px;
+      padding: 44px;
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
     }
-    .footer-links li {
-      margin: 8px 0;
+
+    .contact-box h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
     }
-    .footer-links a {
-      color: #b9cfdb;
-      text-decoration: none;
-      transition: 0.2s;
+
+    .contact-box p {
+      color: #cbd5e1;
+      max-width: 640px;
     }
-    .footer-links a:hover {
-      color: white;
-    }
-    .copyright {
-      border-top: 1px solid #2a3f46;
-      padding-top: 28px;
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      color: var(--muted);
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.92rem;
     }
-    @media (max-width: 780px) {
-      .container { padding: 0 24px; }
-      .hero-content h1 { font-size: 2.4rem; }
-      .section-title { font-size: 1.9rem; }
-      .hero-grid { flex-direction: column; }
-      .insight-grid { flex-direction: column; text-align: center; }
-      .contact-grid { flex-direction: column; }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .apps-grid,
+      .policies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        padding: 12px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
     }
   </style>
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="container nav-flex">
-    <div class="logo">btech<span>.github.io</span></div>
-    <div class="nav-links">
-      <a href="#projects">Projects</a>
-      <a href="#team">Team</a>
-      <a href="#insights">Insights</a>
-      <a href="#contact">Contact</a>
-      <a href="https://github.com/btech" target="_blank" class="btn-outline-small">GitHub ↗</a>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="BTech Creations home">
+        <span class="brand-mark">BT</span>
+        <span>BTech Creations</span>
+      </a>
+      <div class="nav-links" aria-label="Main navigation">
+        <a href="#apps">Apps</a>
+        <a href="#about">About</a>
+        <a href="#policies">Policies</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/btechcreations" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<main>
-  <!-- Hero Section -->
-  <section class="hero">
+  <header id="top" class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="badge">⚡ Open source innovation lab</div>
-        <h1>Building the future, <span class="hero-highlight">one commit</span> at a time.</h1>
-        <p class="hero-description">BTech is a collective of engineers, designers, and creators building high-impact tools, frameworks, and digital experiences. Explore our open‑source universe on GitHub.</p>
-        <div class="hero-stats">
-          <div class="stat-item"><h3>28+</h3><p>public repos</p></div>
-          <div class="stat-item"><h3>1.2k</h3><p>stars across org</p></div>
-          <div class="stat-item"><h3>14</h3><p>contributors</p></div>
-        </div>
-        <div class="btn-group">
-          <a href="https://github.com/btech" target="_blank" class="btn-primary">✨ Explore on GitHub</a>
-          <a href="#projects" class="btn-secondary">View projects ↓</a>
+      <div>
+        <div class="eyebrow">Mobile apps • Web tools • Digital products</div>
+        <h1>Useful apps built for everyday people.</h1>
+        <p>
+          BTech Creations develops simple, practical, and user-friendly mobile apps for productivity,
+          learning, finance, QR tools, travel, and everyday digital needs.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#apps">Explore Apps</a>
+          <a class="btn btn-secondary" href="mailto:btech.creations@gmail.com">Contact Us</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="code-card">
-          <div class="code-line"><span class="comment">// btech/core · latest release</span></div>
-          <div class="code-line"><span class="keyword">import</span> { pipeline } <span class="keyword">from</span> <span class="string">'@btech/flow'</span>;</div>
-          <div class="code-line"><span class="keyword">const</span> engine = <span class="keyword">new</span> <span class="string">PipelineEngine</span>({</div>
-          <div class="code-line">  mode: <span class="string">'serverless'</span>,</div>
-          <div class="code-line">  cache: <span class="string">true</span>,</div>
-          <div class="code-line">});</div>
-          <div class="code-line">engine.<span class="keyword">deploy</span>(<span class="string">'btech/orchestra'</span>);</div>
-          <div class="code-line"><span class="comment">// →  ready in 0.3ms · MIT licensed</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Projects Showcase -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">📦 Flagship open-source</h2>
-      <div class="section-sub">Tools and libraries crafted with care, used by thousands of developers worldwide.</div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-icon">⚙️</div>
-          <div class="project-title">Orchestra</div>
-          <div class="project-desc">Declarative workflow orchestration for Node.js & Deno. Built-in observability, retries, and DAG execution.</div>
-          <div class="project-tech"><span class="tech-badge">TypeScript</span><span class="tech-badge">Graph</span><span class="tech-badge">Kafka</span></div>
-          <a href="#" class="repo-link">github.com/btech/orchestra →</a>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">🎨</div>
-          <div class="project-title">Atlas UI</div>
-          <div class="project-desc">Headless component library and design system for React & Vue. Accessibility first, fully customizable.</div>
-          <div class="project-tech"><span class="tech-badge">React</span><span class="tech-badge">Vue</span><span class="tech-badge">CSS vars</span></div>
-          <a href="#" class="repo-link">github.com/btech/atlas-ui →</a>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">🧠</div>
-          <div class="project-title">Vectorize</div>
-          <div class="project-desc">High-performance vector search engine & embeddings pipeline. Ideal for RAG & semantic search apps.</div>
-          <div class="project-tech"><span class="tech-badge">Rust</span><span class="tech-badge">Python bindings</span></div>
-          <a href="#" class="repo-link">github.com/btech/vectorize →</a>
-        </div>
-        <div class="project-card">
-          <div class="project-icon">📡</div>
-          <div class="project-title">Pulse</div>
-          <div class="project-desc">Real-time monitoring & alerting for microservices. Lightweight, self-hosted, Prometheus native.</div>
-          <div class="project-tech"><span class="tech-badge">Go</span><span class="tech-badge">gRPC</span><span class="tech-badge">React</span></div>
-          <a href="#" class="repo-link">github.com/btech/pulse →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GitHub Insights & contributions -->
-  <section id="insights">
-    <div class="container insight-bg">
-      <div class="insight-grid">
-        <div class="insight-stats">
-          <h3>🧩 Powered by community</h3>
-          <p>We believe in transparent, open-source development. Every line of code tells a story.</p>
-          <div style="margin-top: 28px;">
-            <div><span class="big-number">450+</span> <span style="font-weight:500;">forks across repos</span></div>
-            <div style="margin-top: 12px;"><span class="big-number">124k+</span> <span style="font-weight:500;">monthly downloads (npm)</span></div>
-            <div style="margin-top: 12px;"><span class="big-number">100%</span> <span style="font-weight:500;">open source · MIT / Apache 2.0</span></div>
-          </div>
-        </div>
-        <div style="text-align: center;">
-          <a href="https://github.com/btech" target="_blank" class="github-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.205 11.387.6.113.82-.26.82-.58 0-.287-.01-1.05-.015-2.06-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.698.83.578C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            btech on GitHub
+      <aside class="hero-card" aria-label="Important links">
+        <h3>Important Links</h3>
+        <div class="quick-links">
+          <a class="quick-link" href="/app-ads.txt" target="_blank" rel="noopener">
+            <div>app-ads.txt<br /><span>AdMob verification file</span></div>
+            <strong>Open</strong>
           </a>
-          <p style="margin-top: 24px; font-size: 0.9rem;">⭐ star us & become a contributor — issues & PRs welcome</p>
+          <a class="quick-link" href="https://github.com/btechcreations" target="_blank" rel="noopener">
+            <div>GitHub Profile<br /><span>Repositories and hosted files</span></div>
+            <strong>Visit</strong>
+          </a>
+          <a class="quick-link" href="mailto:btech.creations@gmail.com">
+            <div>Email Support<br /><span>btech.creations@gmail.com</span></div>
+            <strong>Mail</strong>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="apps">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Apps & Projects</h2>
+          <p>Real products and app ideas from BTech Creations. Update the Play Store links after each app is published.</p>
+        </div>
+
+        <div class="apps-grid">
+          <article class="app-card">
+            <div class="app-icon">🔳</div>
+            <h3>QSnap</h3>
+            <p>QR and barcode scanner/generator app for quick scanning, creating, sharing, and saving codes.</p>
+            <div class="tag-row">
+              <span class="tag">QR Scanner</span>
+              <span class="tag">Barcode</span>
+              <span class="tag">Android</span>
+            </div>
+            <a class="card-link" href="https://play.google.com/store/apps/dev?id=5228606434374966942" target="_blank" rel="noopener">View on Play Store →</a>
+          </article>
+
+          <article class="app-card">
+            <div class="app-icon">🗣️</div>
+            <h3>Tongue Twisters</h3>
+            <p>English speaking practice app with tongue twisters, levels, speech practice, and pronunciation improvement.</p>
+            <div class="tag-row">
+              <span class="tag">English Practice</span>
+              <span class="tag">Speaking</span>
+              <span class="tag">Learning</span>
+            </div>
+            <a class="card-link" href="https://play.google.com/store/apps/details?id=com.btech.tonguetwister" target="_blank" rel="noopener">View on Play Store →</a>
+          </article>
+
+          <article class="app-card">
+            <div class="app-icon">💰</div>
+            <h3>EMI Hisab BD</h3>
+            <p>Loan EMI calculator for Bangladesh with EMI result, full schedule, sharing, and finance calculation tools.</p>
+            <div class="tag-row">
+              <span class="tag">Finance</span>
+              <span class="tag">EMI</span>
+              <span class="tag">Bangladesh</span>
+            </div>
+            <a class="card-link" href="#contact">Coming soon →</a>
+          </article>
+
+          <article class="app-card">
+            <div class="app-icon">🌍</div>
+            <h3>Travalingo</h3>
+            <p>Travel phrase and translation helper app for common communication needs while visiting another country.</p>
+            <div class="tag-row">
+              <span class="tag">Travel</span>
+              <span class="tag">Translation</span>
+              <span class="tag">Phrases</span>
+            </div>
+            <a class="card-link" href="#contact">In development →</a>
+          </article>
+
+          <article class="app-card">
+            <div class="app-icon">🚀</div>
+            <h3>App Launch Tools</h3>
+            <p>Utility apps and launch-support tools focused on productivity, reminders, calculators, and simple daily use cases.</p>
+            <div class="tag-row">
+              <span class="tag">Productivity</span>
+              <span class="tag">Utility</span>
+              <span class="tag">Tools</span>
+            </div>
+            <a class="card-link" href="#contact">Learn more →</a>
+          </article>
+
+          <article class="app-card">
+            <div class="app-icon">🧩</div>
+            <h3>Custom Software</h3>
+            <p>Mobile app, API, admin panel, and web development services for real business requirements.</p>
+            <div class="tag-row">
+              <span class="tag">React Native</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">Web</span>
+            </div>
+            <a class="card-link" href="mailto:btech.creations@gmail.com">Request service →</a>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Team Section (maintainers) -->
-  <section id="team">
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="profile-card">
+          <h3>About BTech Creations</h3>
+          <p>
+            BTech Creations is a small independent software brand focused on building useful mobile apps,
+            simple digital tools, and reliable software solutions.
+          </p>
+        </div>
+
+        <div class="info-list">
+          <div class="info-item">
+            <strong>What we build</strong>
+            Android apps, React Native apps, admin panels, APIs, calculators, QR tools, learning apps, and business software.
+          </div>
+          <div class="info-item">
+            <strong>Technology focus</strong>
+            React Native, Expo, Android, Java, Spring Boot, React, Firebase, REST APIs, and cloud-hosted static pages.
+          </div>
+          <div class="info-item">
+            <strong>Our goal</strong>
+            Create clean, practical, and helpful apps that solve small but real problems for users.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="policies">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Policies & Verification</h2>
+          <p>Useful public files and pages for Play Store, AdMob, app verification, and user trust.</p>
+        </div>
+
+        <div class="policies-grid">
+          <article class="policy-card">
+            <h3>app-ads.txt</h3>
+            <p>Required for AdMob app ownership and ad inventory verification.</p>
+            <a class="card-link" href="/app-ads.txt" target="_blank" rel="noopener">Open app-ads.txt →</a>
+          </article>
+
+          <article class="policy-card">
+            <h3>Privacy Policy</h3>
+            <p>Add your app privacy policy pages here after publishing them in this GitHub Pages site.</p>
+            <a class="card-link" href="mailto:btech.creations@gmail.com">Contact for policy link →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Need help or want to contact us?</h2>
+            <p>
+              For app support, business inquiries, bug reports, or custom software requests, send us an email.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="mailto:btech.creations@gmail.com">btech.creations@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <div class="container">
-      <h2 class="section-title">👥 Core team</h2>
-      <div class="section-sub">Meet the minds behind the innovation. Open source maintainers, engineers, and designers.</div>
-      <div class="team-grid">
-        <div class="member-card">
-          <div class="avatar">🧩</div>
-          <div class="member-name">Alex Rivera</div>
-          <div class="member-role">Lead Architect</div>
-          <div class="member-bio">Systems & distributed infra. Creator of Orchestra & ex-Cloudflare engineer.</div>
-        </div>
-        <div class="member-card">
-          <div class="avatar">🎨</div>
-          <div class="member-name">Maya Chen</div>
-          <div class="member-role">Design Systems Lead</div>
-          <div class="member-bio">Atlas UI designer, design token fanatic, and Vue/Nuxt advocate.</div>
-        </div>
-        <div class="member-card">
-          <div class="avatar">⚡</div>
-          <div class="member-name">Sam Odumosu</div>
-          <div class="member-role">ML & Vector lead</div>
-          <div class="member-bio">Rustacean building Vectorize. Previously at Hugging Face.</div>
-        </div>
-        <div class="member-card">
-          <div class="avatar">📊</div>
-          <div class="member-name">Jasmine Kaur</div>
-          <div class="member-role">DevRel & Ops</div>
-          <div class="member-bio">Community growth & docs. Ensures every PR shines ✨.</div>
-        </div>
-      </div>
+      © <span id="year"></span> BTech Creations. All rights reserved. Built with GitHub Pages.
     </div>
-  </section>
+  </footer>
 
-  <!-- Contact Us Section with email -->
-  <section id="contact">
-    <div class="container contact-section">
-      <div style="padding: 24px 0 12px;">
-        <h2 class="section-title">📬 Contact us</h2>
-        <div class="section-sub">Have a question, collaboration idea, or just want to say hello? Reach out anytime.</div>
-      </div>
-      <div class="contact-grid" style="padding: 16px 32px 48px 32px;">
-        <div class="contact-info">
-          <h3>Let’s connect ✨</h3>
-          <p>We’re actively looking for contributors, design partners, and open-source enthusiasts. Drop us a line — we reply within 48h.</p>
-          <div class="contact-details">
-            <div class="contact-email">
-              <span>✉️</span>
-              <a href="mailto:btech.creations@gmail.com">btech.creations@gmail.com</a>
-              <span style="margin-left:auto; font-size:0.9rem;">📋</span>
-            </div>
-            <div class="contact-social">
-              <div class="contact-icon">🐙 GitHub</div>
-              <div class="contact-icon">🐦 X</div>
-              <div class="contact-icon">💬 Discord</div>
-            </div>
-            <p style="margin-top: 24px; font-size:0.85rem;">📍 Open source-first · remote team based in UTC-5 to UTC+8</p>
-          </div>
-        </div>
-        <div class="contact-form-placeholder">
-          <span style="font-size:2rem;">💌</span>
-          <h3 style="margin: 8px 0 12px;">Send a quick message</h3>
-          <div class="mock-form">
-            <input type="text" placeholder="Your name" class="mock-input" value="">
-            <input type="email" placeholder="Your email" class="mock-input" value="">
-            <textarea rows="2" placeholder="Tell us about your project or idea..." class="mock-input" style="border-radius: 28px;"></textarea>
-            <button class="mock-btn" onclick="alert('Thanks for reaching out! 📨 This is a demo. Email us directly at btech.creations@gmail.com — we will respond soon.')">Send message →</button>
-            <div class="tiny-note">✨ For direct inquiries, use: <strong>btech.creations@gmail.com</strong></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA & contribution -->
-  <section style="padding-top: 20px; padding-bottom: 60px;">
-    <div class="container" style="background: #eaf6f2; border-radius: 48px; padding: 56px 32px; text-align: center;">
-      <h2 style="font-size: 2rem; font-weight: 700;">Start contributing today</h2>
-      <p style="max-width: 600px; margin: 16px auto 28px; color: #255f4f;">Open source is at our core. Whether you're fixing a typo or shipping a feature, join us and help shape the ecosystem.</p>
-      <div class="btn-group" style="justify-content: center;">
-        <a href="https://github.com/btech" target="_blank" class="btn-primary">📌 See open issues</a>
-        <a href="#" class="btn-secondary">📖 Contribution guide</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-flex">
-      <div class="footer-col">
-        <div class="logo" style="color:white; background: none; -webkit-background-clip: unset; background: none; color:#cbd5e1;">btech<span style="color:#7ed6b5;">.github.io</span></div>
-        <p>Building modern infrastructure, one open-source tool at a time. Based globally, remote-first.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul class="footer-links">
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="https://github.com/btech?tab=repositories" target="_blank">Repositories</a></li>
-          <li><a href="#">Security & Policies</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Reach out</h4>
-        <ul class="footer-links">
-          <li><a href="mailto:btech.creations@gmail.com">btech.creations@gmail.com</a></li>
-          <li><a href="#contact">Contact form</a></li>
-          <li><a href="https://github.com/btech" target="_blank">GitHub Org</a></li>
-          <li><a href="#">Community guidelines</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="copyright">
-      © 2025 BTech · Open source collective. MIT License where applicable. Built with ☕ and <a href="https://github.com" style="color:#8bb9b0;">GitHub Pages</a> · Contact: btech.creations@gmail.com
-    </div>
-  </div>
-</footer>
-
-<script>
-  (function() {
-    console.log("🐙 BTech Lab · welcome to our open source universe — contact: btech.creations@gmail.com");
-    const style = "color: #1e6f5c; font-weight: bold; font-size: 1rem;";
-    console.log("%c✨ btech.github.io — pushing the boundaries of collaborative code", style);
-  })();
-</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
